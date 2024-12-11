@@ -17,7 +17,13 @@ def catch_all(path):
     for key, value in request.form.items():
         print(f"  {key}: {value}")
     print(f"IP : {request.remote_addr}")
+    if 'file' in request.files:
+        uploaded_file = request.files['file']
+        print("File received:")
+        print(f"  Filename: {uploaded_file.filename}")
+        print("  Content:")
+        print(uploaded_file.read())
     return "Request received and logged.", 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=8875, debug=True)
