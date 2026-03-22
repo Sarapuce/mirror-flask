@@ -27,6 +27,8 @@ def catch_all(path):
         print("  Content:")
         print(uploaded_file.read())
     headers_rows = "".join(f"<tr><td><b>{h}</b></td><td>{v}</td></tr>" for h, v in request.headers.items())
+    params_rows = "".join(f"<tr><td><b>{k}</b></td><td>{v}</td></tr>" for k, v in request.args.items())
+    params_section = f"<h2>QUERY PARAMS</h2><table>{params_rows}</table>" if request.args else ""
     response_body = f"""<!DOCTYPE html>
 <html>
 <head><style>
@@ -39,6 +41,7 @@ def catch_all(path):
 <body>
   <h2>PATH</h2>
   <p>/{path}</p>
+  {params_section}
   <h2>HEADERS</h2>
   <table>{headers_rows}</table>
 </body>
