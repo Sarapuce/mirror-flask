@@ -25,7 +25,9 @@ def catch_all(path):
         print(f"  Filename: {uploaded_file.filename}")
         print("  Content:")
         print(uploaded_file.read())
-    return "Request received and logged.", 200
+    headers_text = "\n".join(f"  {h}: {v}" for h, v in request.headers.items())
+    response_body = f"Path: /{path}\nHeaders:\n{headers_text}\n"
+    return response_body, 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8875, debug=True)
