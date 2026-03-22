@@ -25,8 +25,23 @@ def catch_all(path):
         print(f"  Filename: {uploaded_file.filename}")
         print("  Content:")
         print(uploaded_file.read())
-    headers_text = "\n".join(f"  {h}: {v}" for h, v in request.headers.items())
-    response_body = f"Path: /{path}\nHeaders:\n{headers_text}\n"
+    headers_rows = "".join(f"<tr><td><b>{h}</b></td><td>{v}</td></tr>" for h, v in request.headers.items())
+    response_body = f"""<!DOCTYPE html>
+<html>
+<head><style>
+  body {{ font-family: monospace; padding: 2em; }}
+  h2 {{ border-bottom: 2px solid black; padding-bottom: 4px; }}
+  table {{ border-collapse: collapse; width: 100%; }}
+  td {{ padding: 4px 12px; vertical-align: top; }}
+  tr:nth-child(even) {{ background: #f2f2f2; }}
+</style></head>
+<body>
+  <h2>PATH</h2>
+  <p>/{path}</p>
+  <h2>HEADERS</h2>
+  <table>{headers_rows}</table>
+</body>
+</html>"""
     return response_body, 200
 
 if __name__ == '__main__':
