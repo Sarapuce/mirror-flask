@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Explain how to do a good commit. Use it each time a commit is needed
+description: Perform a good commit. Use it each time you need to commit changes
 ---
 
 When doing a commit:
