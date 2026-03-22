@@ -9,10 +9,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Running the server
 
 ```bash
-./start.sh
+./start.sh [--port <port>]
 ```
 
-Runs on `0.0.0.0:8875` with debug mode enabled. CORS is open to all origins (`*`).
+Runs on `0.0.0.0:8875` by default. Pass `--port` to use a different port (e.g. `./start.sh --port 9000`). Debug mode is enabled. CORS is open to all origins (`*`).
 
 ## Dependencies
 

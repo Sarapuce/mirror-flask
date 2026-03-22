@@ -1,3 +1,4 @@
+import argparse
 from flask import Flask, request
 from flask_cors import CORS
 
@@ -45,4 +46,7 @@ def catch_all(path):
     return response_body, 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8875, debug=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--port', type=int, default=8875)
+    args = parser.parse_args()
+    app.run(host='0.0.0.0', port=args.port, debug=True)

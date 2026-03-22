@@ -18,4 +18,4 @@ if [ ${#MISSING[@]} -gt 0 ]; then
     fi
 fi
 
-python main.py
+python main.py "$@"
